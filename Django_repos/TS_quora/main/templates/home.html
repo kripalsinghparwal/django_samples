@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>All Questions</h2>
+    <a href="{% url 'post_question' %}">Post a New Question</a>
+    <ul>
+        {% for question in questions %}
+            <li>
+                <a href="{% url 'view_question' pk=question.pk %}">{{ question.title }}</a>
+                <p>{{ question.description }}</p>
+            </li>
+        {% empty %}
+            <p>No questions posted yet.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
